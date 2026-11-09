@@ -11,6 +11,7 @@ A native macOS app that shows how long until stock markets open or close, with l
   - **General**: show or hide the Dock icon (hiding it makes OpenBell a menu bar-only app) and choose the market shown in the menu bar.
   - **Appearance**: choose the default view, List or Dial, and whether the market cards show under the dial.
   - **Markets**: turn individual markets on or off.
+  - **Widgets**: the available widgets and how to add them to the desktop.
   - **About**: app version.
 - **Widgets**
   - **Small**: one market with a big countdown. Right-click → *Edit Widget* to pick the market.
