@@ -37,10 +37,114 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     }
 }
 
+// MARK: - Settings window
+
+enum SettingsPane: String, CaseIterable, Identifiable {
+    case general = "General", appearance = "Appearance", markets = "Markets", about = "About"
+    var id: String { rawValue }
+
+    var symbol: String {
+        switch self {
+        case .general: "gearshape.fill"
+        case .appearance: "paintbrush.fill"
+        case .markets: "chart.line.uptrend.xyaxis"
+        case .about: "info.circle.fill"
+        }
+    }
+
+    var tint: Color {
+        switch self {
+        case .general: .gray
+        case .appearance: .blue
+        case .markets: .green
+        case .about: .orange
+        }
+    }
+}
+
+/// System Settings–style window: panes in a sidebar on the left, the selected pane's form on the right.
 struct SettingsView: View {
+    @State private var pane: SettingsPane = .general
+
+    var body: some View {
+        NavigationSplitView {
+            List(SettingsPane.allCases, selection: $pane) { pane in
+                Label {
+                    Text(pane.rawValue)
+                } icon: {
+                    Image(systemName: pane.symbol)
+                        .font(.system(size: 11, weight: .semibold))
+                        .foregroundStyle(.white)
+                        .frame(width: 22, height: 22)
+                        .background(RoundedRectangle(cornerRadius: 6, style: .continuous).fill(pane.tint.gradient))
+                }
+                .tag(pane)
+            }
+            .navigationSplitViewColumnWidth(190)
+            .toolbar(removing: .sidebarToggle)
+        } detail: {
+            Group {
+                switch pane {
+                case .general: GeneralSettings()
+                case .appearance: AppearanceSettings()
+                case .markets: MarketsSettings()
+                case .about: AboutSettings()
+                }
+            }
+            .formStyle(.grouped)
+            .navigationTitle(pane.rawValue)
+        }
+        .frame(width: 700, height: 500)
+    }
+}
+
+private struct GeneralSettings: View {
     @AppStorage(SettingsKey.showDockIcon) private var showDockIcon = true
     @AppStorage(SettingsKey.menuBarMarket) private var menuBarMarketID = Market.nyse.id
+    @AppStorage(SettingsKey.enabledMarkets) private var enabledMarkets = ""
+
+    var body: some View {
+        Form {
+            Section {
+                Toggle("Show icon in Dock", isOn: $showDockIcon)
+                    .onChange(of: showDockIcon) { _, show in DockIcon.apply(show) }
+            } footer: {
+                Text("When hidden, OpenBell runs from the menu bar only.")
+                    .foregroundStyle(.secondary)
+            }
+
+            Section {
+                Picker("Menu bar market", selection: $menuBarMarketID) {
+                    ForEach(Market.all.enabled(Market.enabledIDs(from: enabledMarkets))) { Text($0.name).tag($0.id) }
+                }
+            } footer: {
+                Text("The menu bar shows this market's countdown to its next open or close.")
+                    .foregroundStyle(.secondary)
+            }
+        }
+    }
+}
+
+private struct AppearanceSettings: View {
     @AppStorage(SettingsKey.displayMode) private var mode: DisplayMode = .list
+
+    var body: some View {
+        Form {
+            Section {
+                Picker("Default view", selection: $mode) {
+                    ForEach(DisplayMode.allCases) { Text($0.rawValue).tag($0) }
+                }
+                .pickerStyle(.segmented)
+            } footer: {
+                Text("List shows each market's countdown; Dial shows the day's sessions on a 24-hour clock.")
+                    .foregroundStyle(.secondary)
+            }
+        }
+    }
+}
+
+private struct MarketsSettings: View {
+    @AppStorage(SettingsKey.menuBarMarket) private var menuBarMarketID = Market.nyse.id
     @AppStorage(SettingsKey.enabledMarkets) private var enabledMarkets = ""
 
     private var enabledIDs: Set<String> { Market.enabledIDs(from: enabledMarkets) }
@@ -62,26 +166,7 @@ struct SettingsView: View {
     var body: some View {
         Form {
             Section {
-                Toggle("Show icon in Dock", isOn: $showDockIcon)
-                    .onChange(of: showDockIcon) { _, show in DockIcon.apply(show) }
-            } footer: {
-                Text("When hidden, OpenBell runs from the menu bar only.")
-                    .foregroundStyle(.secondary)
-            }
-
-            Section {
-                Picker("Menu bar market", selection: $menuBarMarketID) {
-                    ForEach(Market.all.enabled(enabledIDs)) { Text($0.name).tag($0.id) }
-                }
-                Picker("Default view", selection: $mode) {
-                    ForEach(DisplayMode.allCases) { Text($0.rawValue).tag($0) }
-                }
-                .pickerStyle(.segmented)
-            }
-
-            Section("Markets") {
                 ForEach(Market.all) { market in
-                    let isOnlyOne = enabledIDs == [market.id]
                     Toggle(isOn: isEnabled(market)) {
                         HStack(spacing: 8) {
                             MarketBadge(market: market, size: 10)
@@ -89,13 +174,42 @@ struct SettingsView: View {
                             Text(market.fullName).foregroundStyle(.secondary)
                         }
                     }
-                    .disabled(isOnlyOne)
+                    .disabled(enabledIDs == [market.id])
                 }
+            } header: {
+                Text("Shown markets")
+            } footer: {
+                Text("Turned-on markets appear in the list, on the dial, and in the menu bar picker. At least one must stay on.")
+                    .foregroundStyle(.secondary)
             }
         }
-        .formStyle(.grouped)
-        .frame(width: 420)
-        .fixedSize(horizontal: false, vertical: true)
+    }
+}
+
+private struct AboutSettings: View {
+    private var version: String {
+        let info = Bundle.main.infoDictionary
+        let short = info?["CFBundleShortVersionString"] as? String ?? "–"
+        let build = info?["CFBundleVersion"] as? String ?? "–"
+        return "Version \(short) (\(build))"
+    }
+
+    var body: some View {
+        VStack(spacing: 10) {
+            Image(nsImage: NSApp.applicationIconImage)
+                .resizable()
+                .frame(width: 96, height: 96)
+            Text("OpenBell")
+                .font(.system(size: 22, weight: .semibold))
+            Text(version)
+                .foregroundStyle(.secondary)
+                .textSelection(.enabled)
+            Text("Countdowns to stock market opens and closes,\nin the menu bar, the app, and widgets.")
+                .multilineTextAlignment(.center)
+                .foregroundStyle(.secondary)
+                .padding(.top, 4)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
 
