@@ -36,6 +36,7 @@ struct OpenBellApp: App {
             ContentView(compact: true)
                 .environmentObject(clock)
                 .frame(width: 420)
+                .fixedSize(horizontal: false, vertical: true)
                 .preferredColorScheme(.dark)
         } label: {
             MenuBarLabel(market: Market.with(id: menuBarMarketID), now: clock.now)

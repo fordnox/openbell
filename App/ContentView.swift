@@ -24,7 +24,7 @@ struct ContentView: View {
             Group {
                 switch mode {
                 case .list: MarketListView(now: clock.now)
-                case .dial: SessionsDialCard(now: clock.now)
+                case .dial: SessionsDialCard(now: clock.now, dialSize: compact ? 320 : 340, compactCards: compact)
                 }
             }
             .transition(.opacity)
@@ -144,6 +144,10 @@ struct MarketRow: View {
 
 struct SessionsDialCard: View {
     let now: Date
+    /// Fixed side length so the dial is never squeezed by a container that won't grow
+    /// (e.g. the menu bar panel keeps the height of whichever view it showed first).
+    var dialSize: CGFloat = 340
+    var compactCards = false
 
     var body: some View {
         VStack(spacing: 14) {
@@ -160,12 +164,12 @@ struct SessionsDialCard: View {
             }
 
             DialView(now: now)
-                .frame(maxWidth: 340)
+                .frame(width: dialSize, height: dialSize)
                 .padding(.vertical, 4)
 
             HStack(spacing: 10) {
                 ForEach(Market.cardOrder) { m in
-                    MarketCard(market: m, now: now)
+                    MarketCard(market: m, now: now, compact: compactCards)
                 }
             }
         }
