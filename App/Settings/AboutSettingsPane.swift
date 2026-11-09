@@ -2,6 +2,8 @@ import AppKit
 import SwiftUI
 
 struct AboutSettingsPane: View {
+    @ObservedObject private var updater = UpdaterManager.shared
+
     var body: some View {
         Form {
             Section {
@@ -20,6 +22,27 @@ struct AboutSettingsPane: View {
                             .textSelection(.enabled)
                         Text("Stock market open and close countdowns.")
                             .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                    }
+                }
+            }
+
+            // App Store copies are updated by the store, so there's nothing to show.
+            if !UpdaterManager.isAppStoreBuild {
+                Section {
+                    Toggle("Automatically check for updates", isOn: Binding(
+                        get: { updater.isSupported && updater.automaticallyChecksForUpdates },
+                        set: { updater.automaticallyChecksForUpdates = $0 }
+                    ))
+                    .disabled(!updater.isSupported)
+
+                    Button("Check for Updates…") { updater.checkForUpdates() }
+                        .disabled(!updater.canCheckForUpdates)
+                } header: {
+                    Text("Updates")
+                } footer: {
+                    if !updater.isSupported {
+                        Text("Updates are turned off in debug builds.")
                             .foregroundStyle(.secondary)
                     }
                 }

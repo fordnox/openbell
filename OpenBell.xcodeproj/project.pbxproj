@@ -18,6 +18,7 @@
 		5C7E8018CE9B07790BC67BD5 /* DialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD7439830EB2DC75423FE33 /* DialView.swift */; };
 		8F740669F541B5F18BAFA8C8 /* OpenBellApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEB020E18F2D7502F124C4 /* OpenBellApp.swift */; };
 		8FDAFA0465587329D54CBE0A /* AppearanceSettingsPane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E54E50399F0E3302D97C523 /* AppearanceSettingsPane.swift */; };
+		A664CFCF1625D88B1A8851DA /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 7DDDFD74D52F7245DFF73A3A /* Sparkle */; };
 		ADB5349B6BFF99F38B8641E5 /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C39AC664BF4836613BD871 /* Market.swift */; };
 		B5B4A42A89E88B7DCDA0B7CC /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = A362CBEE4C6CF93FEE90075D /* Preferences.swift */; };
 		B72C888804AD44C72D69050E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5446EF2FC5ACD26FA778AA1 /* SettingsView.swift */; };
@@ -26,6 +27,7 @@
 		E53CE2F5DF17AA3B60419488 /* DialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD7439830EB2DC75423FE33 /* DialView.swift */; };
 		F410FC21EB1FA58FA344788E /* OpenBellWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFFC87FB0F5DD8E3D4B84AE /* OpenBellWidget.swift */; };
 		FC75B1CB027D128A8ABCC691 /* WidgetsSettingsPane.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E5344DBBC40FC50ABE0D2 /* WidgetsSettingsPane.swift */; };
+		FE8C7B5947A18662E5381F3A /* UpdaterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC83B80213CAE54873547DD /* UpdaterManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,15 +67,29 @@
 		6E54E50399F0E3302D97C523 /* AppearanceSettingsPane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceSettingsPane.swift; sourceTree = "<group>"; };
 		7FFFC87FB0F5DD8E3D4B84AE /* OpenBellWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenBellWidget.swift; sourceTree = "<group>"; };
 		A10D88C7ACF34E2883AC2007 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A185635898E251287E25BD05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		A362CBEE4C6CF93FEE90075D /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		A5446EF2FC5ACD26FA778AA1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		B03F2438685D354AB1E51C72 /* OpenBellWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OpenBellWidget.entitlements; sourceTree = "<group>"; };
 		B05E5344DBBC40FC50ABE0D2 /* WidgetsSettingsPane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetsSettingsPane.swift; sourceTree = "<group>"; };
 		B86B3803EB3FFF2A3163DC07 /* AboutSettingsPane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutSettingsPane.swift; sourceTree = "<group>"; };
 		BE5BFC5AB99B37089364B8EE /* OpenBell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenBell.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFC83B80213CAE54873547DD /* UpdaterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdaterManager.swift; sourceTree = "<group>"; };
 		CB7CA52A52D5B35C5753826A /* GeneralSettingsPane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettingsPane.swift; sourceTree = "<group>"; };
 		F9C39AC664BF4836613BD871 /* Market.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Market.swift; sourceTree = "<group>"; };
+		FA0EE60893A0AE8923A62A34 /* OpenBell-DeveloperID.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "OpenBell-DeveloperID.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		069B536B39394F394E4000F8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A664CFCF1625D88B1A8851DA /* Sparkle in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		1FE497824A6CB09E6A9E2963 /* Products */ = {
@@ -114,9 +130,12 @@
 			children = (
 				A10D88C7ACF34E2883AC2007 /* Assets.xcassets */,
 				2C7CE8FBC43C483B9CCAD2E0 /* ContentView.swift */,
+				A185635898E251287E25BD05 /* Info.plist */,
+				FA0EE60893A0AE8923A62A34 /* OpenBell-DeveloperID.entitlements */,
 				4E5B54EA3F7CF9BAA94BEDAB /* OpenBell.entitlements */,
 				10BEB020E18F2D7502F124C4 /* OpenBellApp.swift */,
 				A362CBEE4C6CF93FEE90075D /* Preferences.swift */,
+				BFC83B80213CAE54873547DD /* UpdaterManager.swift */,
 				53C11A54F1FE2E8F0AB1BC32 /* Settings */,
 			);
 			path = App;
@@ -151,6 +170,7 @@
 			buildPhases = (
 				8A2749DB86349D2E200EA0DA /* Sources */,
 				6094F12B4CC7C6B5B022D9AB /* Resources */,
+				069B536B39394F394E4000F8 /* Frameworks */,
 				C9E65CD0B13543B5BA8564FE /* Embed Foundation Extensions */,
 			);
 			buildRules = (
@@ -160,6 +180,7 @@
 			);
 			name = OpenBell;
 			packageProductDependencies = (
+				7DDDFD74D52F7245DFF73A3A /* Sparkle */,
 			);
 			productName = OpenBell;
 			productReference = BE5BFC5AB99B37089364B8EE /* OpenBell.app */;
@@ -210,6 +231,9 @@
 			);
 			mainGroup = AEB97EA360E5111EED1C1E29;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				C10D2902101A244BA6E0BBEA /* XCRemoteSwiftPackageReference "Sparkle" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 1FE497824A6CB09E6A9E2963 /* Products */;
 			projectDirPath = "";
@@ -260,6 +284,7 @@
 				B72C888804AD44C72D69050E /* SettingsView.swift in Sources */,
 				3C6D58E6C0A24D7772694927 /* SettingsWindowController.swift in Sources */,
 				0704EEBA2EB1F1F8ADD06301 /* SharedSettings.swift in Sources */,
+				FE8C7B5947A18662E5381F3A /* UpdaterManager.swift in Sources */,
 				FC75B1CB027D128A8ABCC691 /* WidgetsSettingsPane.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -362,6 +387,7 @@
 				CODE_SIGN_ENTITLEMENTS = App/OpenBell.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = App/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = OpenBell;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
@@ -471,6 +497,7 @@
 				CODE_SIGN_ENTITLEMENTS = App/OpenBell.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = App/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = OpenBell;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
@@ -517,6 +544,25 @@
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C10D2902101A244BA6E0BBEA /* XCRemoteSwiftPackageReference "Sparkle" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sparkle-project/Sparkle";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7DDDFD74D52F7245DFF73A3A /* Sparkle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C10D2902101A244BA6E0BBEA /* XCRemoteSwiftPackageReference "Sparkle" */;
+			productName = Sparkle;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 31270CA6E51FCECA1C3E623D /* Project object */;
 }

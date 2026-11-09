@@ -31,10 +31,14 @@ enum DockIcon {
 }
 
 final class AppDelegate: NSObject, NSApplicationDelegate {
+    // Touching the shared instance here creates Sparkle's updater controller before launch finishes.
+    @MainActor private let updaterManager = UpdaterManager.shared
+
     // SwiftUI sets .regular during launch, so apply the preference afterwards.
     func applicationDidFinishLaunching(_ notification: Notification) {
         NSApp.setActivationPolicy(DockIcon.isShown ? .regular : .accessory)
         SharedSettings.migrateFromStandardDefaults()
+        MainActor.assumeIsolated { updaterManager.start() }
     }
 }
 

@@ -36,6 +36,9 @@ struct OpenBellApp: App {
         .defaultSize(width: 480, height: 640)
         .commands {
             // Settings is an AppKit window (see SettingsWindowController), so wire ⌘, to it.
+            CommandGroup(after: .appInfo) {
+                CheckForUpdatesButton()
+            }
             CommandGroup(replacing: .appSettings) {
                 Button("Settings…") { SettingsWindowController.show() }
                     .keyboardShortcut(",")

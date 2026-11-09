@@ -65,3 +65,6 @@ fastlane/test_output
 *.mobileprovision
 *.provisionprofile
 .env
+
+# Sparkle EdDSA private key backup — never commit
+sparkle-private-key.txt

@@ -4,6 +4,10 @@ options:
   deploymentTarget:
     macOS: "14.0"
   createIntermediateGroups: true
+packages:
+  Sparkle:
+    url: https://github.com/sparkle-project/Sparkle
+    from: "2.0.0"
 settings:
   base:
     SWIFT_VERSION: "5.0"
@@ -18,6 +22,17 @@ targets:
     type: application
     platform: macOS
     sources: [App, Shared]
+    info:
+      path: App/Info.plist
+      properties:
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        # Sparkle auto-update (Developer ID builds only; disabled at runtime for App Store builds).
+        SUFeedURL: https://raw.githubusercontent.com/fordnox/openbell/main/appcast.xml
+        SUPublicEDKey: hlOP/B9kmeYeiQ7yHhqovpsoUewXdNe+ZkElzMOQ1Fc=
+        # Sandboxed app: install via Sparkle's launcher XPC service, download via its downloader service.
+        SUEnableInstallerLauncherService: true
+        SUEnableDownloaderService: true
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.camosec.openbell
@@ -32,6 +47,7 @@ targets:
         INFOPLIST_KEY_LSMinimumSystemVersion: "14.0"
     dependencies:
       - target: OpenBellWidget
+      - package: Sparkle
   OpenBellWidget:
     type: app-extension
     platform: macOS
