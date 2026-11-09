@@ -9,12 +9,14 @@ struct ContentView: View {
     var compact = false
     @EnvironmentObject private var clock: Clock
     @AppStorage(SettingsKey.displayMode) private var mode: DisplayMode = .list
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     var body: some View {
         VStack(alignment: .leading, spacing: 18) {
             HStack {
                 Text("Markets")
                     .font(.system(size: 22, weight: .semibold))
+                    .accessibilityAddTraits(.isHeader)
                 Spacer()
                 SegmentedToggle(selection: $mode)
                     .frame(width: 200)
@@ -43,7 +45,7 @@ struct ContentView: View {
         .padding(compact ? 18 : 24)
         .padding(.top, compact ? 0 : 4)
         .background(Color(white: 0.16))
-        .animation(.easeInOut(duration: 0.2), value: mode)
+        .animation(reduceMotion ? nil : .easeInOut(duration: 0.2), value: mode)
     }
 }
 
@@ -80,6 +82,13 @@ struct SegmentedToggle: View {
         .padding(4)
         .background(RoundedRectangle(cornerRadius: 12, style: .continuous).fill(Color.black.opacity(0.18)))
         .overlay(RoundedRectangle(cornerRadius: 12, style: .continuous).strokeBorder(Palette.cardStroke))
+        // Keyboard users switch with ⌘1 / ⌘2 (View menu); VoiceOver gets a real picker.
+        .accessibilityRepresentation {
+            Picker("Display", selection: $selection) {
+                ForEach(DisplayMode.allCases) { Text($0.rawValue).tag($0) }
+            }
+            .pickerStyle(.segmented)
+        }
     }
 }
 
@@ -132,6 +141,9 @@ struct MarketRow: View {
         }
         .padding(.horizontal, 20)
         .padding(.vertical, 16)
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(market.fullName)
+        .accessibilityValue("\(phase.accessibilityDescription(now: now)). Local time \(market.localTimeString(at: now)).")
     }
 }
 
@@ -144,7 +156,7 @@ struct SessionsDialCard: View {
     var dialSize: CGFloat = 340
     var compactCards = false
     @AppStorage(SettingsKey.enabledMarkets) private var enabledMarkets = ""
-    @AppStorage(SettingsKey.showDialCards) private var showDialCards = true
+    @AppStorage(SharedSettings.showDialCardsKey, store: SharedSettings.store) private var showDialCards = true
 
     var body: some View {
         VStack(spacing: 14) {

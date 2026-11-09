@@ -16,6 +16,9 @@ struct DialView: View {
             if showsCenterTime { centerLabel }
         }
         .aspectRatio(1, contentMode: .fit)
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("Sessions dial")
+        .accessibilityValue(markets.map { "\($0.name) \($0.phase(at: now).isOpen ? "open" : "closed")" }.joined(separator: ", "))
     }
 
     // MARK: Geometry
@@ -216,12 +219,21 @@ struct StatusDot: View {
     let phase: MarketPhase
     var size: CGFloat = 12
 
+    @Environment(\.accessibilityDifferentiateWithoutColor) private var differentiateWithoutColor
+
     var body: some View {
-        Circle()
-            .fill(Palette.status(phase))
-            .frame(width: size, height: size)
-            .padding(size * 0.2)
-            .background(Circle().fill(Color.black.opacity(0.35)))
+        // With "Differentiate without color", closed markets get a ring instead of a disc.
+        Group {
+            if differentiateWithoutColor && !phase.isOpen {
+                Circle().strokeBorder(Palette.status(phase), lineWidth: size * 0.22)
+            } else {
+                Circle().fill(Palette.status(phase))
+            }
+        }
+        .frame(width: size, height: size)
+        .padding(size * 0.2)
+        .background(Circle().fill(Color.black.opacity(0.35)))
+        .accessibilityLabel(phase.isOpen ? "Open" : "Closed")
     }
 }
 
@@ -236,6 +248,7 @@ struct MarketBadge: View {
             .frame(width: size, height: size)
             .padding(size * 0.15)
             .background(Circle().fill(market.color.opacity(0.18)))
+            .accessibilityHidden(true)
     }
 }
 
@@ -324,5 +337,8 @@ struct MarketCard: View {
         .padding(.horizontal, compact ? 4 : 6)
         .background(RoundedRectangle(cornerRadius: 14, style: .continuous).fill(Color.white.opacity(0.07)))
         .overlay(RoundedRectangle(cornerRadius: 14, style: .continuous).strokeBorder(Palette.cardStroke))
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(market.fullName)
+        .accessibilityValue(phase.accessibilityDescription(now: now))
     }
 }

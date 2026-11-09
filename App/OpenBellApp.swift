@@ -22,6 +22,7 @@ struct OpenBellApp: App {
     @StateObject private var clock = Clock()
     @AppStorage(SettingsKey.menuBarMarket) private var menuBarMarketID = Market.nyse.id
     @AppStorage(SettingsKey.enabledMarkets) private var enabledMarkets = ""
+    @AppStorage(SettingsKey.displayMode) private var mode: DisplayMode = .list
 
     var body: some Scene {
         WindowGroup("OpenBell", id: "main") {
@@ -38,6 +39,18 @@ struct OpenBellApp: App {
             CommandGroup(replacing: .appSettings) {
                 Button("Settings…") { SettingsWindowController.show() }
                     .keyboardShortcut(",")
+            }
+            // View ▸ as List / as Dial, mirroring the toggle in the window (checkmark on the active one).
+            CommandGroup(before: .toolbar) {
+                ForEach(Array(DisplayMode.allCases.enumerated()), id: \.element) { index, option in
+                    Toggle("as \(option.rawValue)", isOn: Binding(get: { mode == option }, set: { _ in mode = option }))
+                        .keyboardShortcut(KeyEquivalent(Character("\(index + 1)")))
+                }
+                Divider()
+            }
+            CommandGroup(replacing: .help) {
+                Button("Adding Widgets to the Desktop") { SettingsWindowController.show(tab: .widgets) }
+                Button("OpenBell Website") { NSWorkspace.shared.open(URL(string: "https://camosec.com")!) }
             }
         }
 
@@ -65,10 +78,12 @@ struct MenuBarLabel: View {
     let market: Market
     let now: Date
 
+    @Environment(\.accessibilityDifferentiateWithoutColor) private var differentiateWithoutColor
+
     var body: some View {
         let phase = market.phase(at: now)
         HStack(spacing: 4) {
-            Image(nsImage: Self.dot(Palette.status(phase)))
+            Image(nsImage: Self.dot(Palette.status(phase), hollow: differentiateWithoutColor && !phase.isOpen))
             if let next = phase.nextEvent {
                 Text("\(market.name) \(CountdownFormat.hm(next.timeIntervalSince(now)))")
                     .monospacedDigit()
@@ -76,14 +91,24 @@ struct MenuBarLabel: View {
                 Text("\(market.name) 24/7")
             }
         }
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("\(market.fullName), \(phase.accessibilityDescription(now: now))")
     }
 
     /// Menu bar images are template-tinted by default; build a non-template colored dot.
-    static func dot(_ color: Color) -> NSImage {
+    /// `hollow` draws a ring instead of a disc, so closed markets read without relying on color.
+    static func dot(_ color: Color, hollow: Bool = false) -> NSImage {
         let size = NSSize(width: 9, height: 9)
         let image = NSImage(size: size, flipped: false) { rect in
-            NSColor(color).setFill()
-            NSBezierPath(ovalIn: rect).fill()
+            if hollow {
+                NSColor(color).setStroke()
+                let ring = NSBezierPath(ovalIn: rect.insetBy(dx: 1, dy: 1))
+                ring.lineWidth = 1.5
+                ring.stroke()
+            } else {
+                NSColor(color).setFill()
+                NSBezierPath(ovalIn: rect).fill()
+            }
             return true
         }
         image.isTemplate = false

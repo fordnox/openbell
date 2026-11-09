@@ -6,7 +6,6 @@ enum SettingsKey {
     static let menuBarMarket = "menuBarMarket"
     static let displayMode = "displayMode"
     static let enabledMarkets = "enabledMarkets"
-    static let showDialCards = "showDialCards"
 }
 
 enum DockIcon {
@@ -35,6 +34,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     // SwiftUI sets .regular during launch, so apply the preference afterwards.
     func applicationDidFinishLaunching(_ notification: Notification) {
         NSApp.setActivationPolicy(DockIcon.isShown ? .regular : .accessory)
+        SharedSettings.migrateFromStandardDefaults()
     }
 }
 

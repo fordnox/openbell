@@ -228,6 +228,20 @@ enum MarketPhase: Equatable, Sendable {
         }
     }
 
+    /// Spoken status, e.g. "Open, closes in 1 hour, 14 minutes".
+    func accessibilityDescription(now: Date) -> String {
+        let f = DateComponentsFormatter()
+        f.allowedUnits = [.day, .hour, .minute]
+        f.unitsStyle = .full
+        f.maximumUnitCount = 2
+        let wait = nextEvent.flatMap { f.string(from: max(60, $0.timeIntervalSince(now))) } ?? ""
+        switch self {
+        case .open: return "Open, closes in \(wait)"
+        case .closed: return "Closed, opens in \(wait)"
+        case .alwaysOpen: return "Open 24/7"
+        }
+    }
+
     var verb: String {
         switch self {
         case .open: return "Closes in"

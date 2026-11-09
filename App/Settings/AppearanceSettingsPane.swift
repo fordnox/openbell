@@ -1,8 +1,9 @@
 import SwiftUI
+import WidgetKit
 
 struct AppearanceSettingsPane: View {
     @AppStorage(SettingsKey.displayMode) private var mode: DisplayMode = .list
-    @AppStorage(SettingsKey.showDialCards) private var showDialCards = true
+    @AppStorage(SharedSettings.showDialCardsKey, store: SharedSettings.store) private var showDialCards = true
 
     var body: some View {
         Form {
@@ -16,8 +17,16 @@ struct AppearanceSettingsPane: View {
                     .foregroundStyle(.secondary)
             }
 
-            Section("Dial") {
+            Section {
                 Toggle("Show market cards under the dial", isOn: $showDialCards)
+                    .onChange(of: showDialCards) { _, _ in
+                        WidgetCenter.shared.reloadTimelines(ofKind: SharedSettings.dialWidgetKind)
+                    }
+            } header: {
+                Text("Dial")
+            } footer: {
+                Text("Also applies to the large Sessions Dial widget.")
+                    .foregroundStyle(.secondary)
             }
         }
         .formStyle(.grouped)

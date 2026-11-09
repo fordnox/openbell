@@ -4,5 +4,9 @@
 <dict>
 	<key>com.apple.security.app-sandbox</key>
 	<true/>
+	<key>com.apple.security.application-groups</key>
+	<array>
+		<string>VBTQQJK27C.com.camosec.openbell</string>
+	</array>
 </dict>
 </plist>

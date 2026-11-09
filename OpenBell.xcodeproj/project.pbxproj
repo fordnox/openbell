@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0704EEBA2EB1F1F8ADD06301 /* SharedSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59AFB4F182C9DD044577E0F8 /* SharedSettings.swift */; };
 		0C7E32C2F825CC2C2C5C7E52 /* OpenBellWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 017A54E5A0C7A464E11F843E /* OpenBellWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		1D61EB56C27F1F843195138C /* SharedSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59AFB4F182C9DD044577E0F8 /* SharedSettings.swift */; };
 		1F7E5E929F098061FE7DF02B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7CE8FBC43C483B9CCAD2E0 /* ContentView.swift */; };
 		23B5F4A78718239F4987C90A /* AboutSettingsPane.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86B3803EB3FFF2A3163DC07 /* AboutSettingsPane.swift */; };
 		3C6D58E6C0A24D7772694927 /* SettingsWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3235277C96B979FA863F6AA5 /* SettingsWindowController.swift */; };
@@ -59,6 +61,7 @@
 		3235277C96B979FA863F6AA5 /* SettingsWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsWindowController.swift; sourceTree = "<group>"; };
 		36C6008310394C05BD7BE6B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		4E5B54EA3F7CF9BAA94BEDAB /* OpenBell.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OpenBell.entitlements; sourceTree = "<group>"; };
+		59AFB4F182C9DD044577E0F8 /* SharedSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedSettings.swift; sourceTree = "<group>"; };
 		6E54E50399F0E3302D97C523 /* AppearanceSettingsPane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceSettingsPane.swift; sourceTree = "<group>"; };
 		7FFFC87FB0F5DD8E3D4B84AE /* OpenBellWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenBellWidget.swift; sourceTree = "<group>"; };
 		A10D88C7ACF34E2883AC2007 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -134,6 +137,7 @@
 			children = (
 				1CD7439830EB2DC75423FE33 /* DialView.swift */,
 				F9C39AC664BF4836613BD871 /* Market.swift */,
+				59AFB4F182C9DD044577E0F8 /* SharedSettings.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -236,6 +240,7 @@
 				5C7E8018CE9B07790BC67BD5 /* DialView.swift in Sources */,
 				ADB5349B6BFF99F38B8641E5 /* Market.swift in Sources */,
 				F410FC21EB1FA58FA344788E /* OpenBellWidget.swift in Sources */,
+				1D61EB56C27F1F843195138C /* SharedSettings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,6 +259,7 @@
 				B5B4A42A89E88B7DCDA0B7CC /* Preferences.swift in Sources */,
 				B72C888804AD44C72D69050E /* SettingsView.swift in Sources */,
 				3C6D58E6C0A24D7772694927 /* SettingsWindowController.swift in Sources */,
+				0704EEBA2EB1F1F8ADD06301 /* SharedSettings.swift in Sources */,
 				FC75B1CB027D128A8ABCC691 /* WidgetsSettingsPane.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

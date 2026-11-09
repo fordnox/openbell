@@ -169,8 +169,10 @@ struct DialWidgetView: View {
             }
             DialView(now: date, markets: Market.dialOrder.enabled(Market.defaultEnabledIDs))
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-            MarketCardGrid(markets: Market.cardOrder.enabled(Market.defaultEnabledIDs),
-                           now: date, live: true, compact: true, spacing: 6)
+            if SharedSettings.showDialCards {
+                MarketCardGrid(markets: Market.cardOrder.enabled(Market.defaultEnabledIDs),
+                               now: date, live: true, compact: true, spacing: 6)
+            }
         }
         .foregroundStyle(.white)
     }
@@ -204,7 +206,7 @@ struct MarketsWidget: Widget {
 
 struct SessionsDialWidget: Widget {
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: "SessionsDial", provider: AllMarketsProvider()) { entry in
+        StaticConfiguration(kind: SharedSettings.dialWidgetKind, provider: AllMarketsProvider()) { entry in
             DialWidgetView(date: entry.date)
                 .containerBackground(for: .widget) { WidgetBackground() }
         }

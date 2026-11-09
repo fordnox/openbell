@@ -13,6 +13,8 @@ A native macOS app that shows how long until stock markets open or close, with l
   - **Markets**: turn individual markets on or off.
   - **Widgets**: the available widgets and how to add them to the desktop.
   - **About**: app version.
+- **Keyboard**: ⌘1 / ⌘2 switch between List and Dial (View menu), ⌘, opens Settings.
+- **Accessibility**: VoiceOver reads each market's status and countdown, the dial and menu bar item have spoken summaries, closed markets show a ring instead of a dot with *Differentiate without color*, and view transitions respect *Reduce motion*.
 - **Widgets**
   - **Small**: one market with a big countdown. Right-click → *Edit Widget* to pick the market.
   - **Medium**: all markets with countdowns and status.
