@@ -4,9 +4,10 @@ A native macOS app that shows how long until stock markets open or close, with l
 
 ## Features
 
-- **Menu bar countdown**: shows `● NYSE 01:14`, a red or green dot plus hours and minutes until the next open or close. Click it to open the full panel, and choose which market it tracks at the bottom of that panel.
+- **Menu bar countdown**: shows `● NYSE 01:14`, a red or green dot plus hours and minutes until the next open or close. Click it to open the full panel. Choose which market it tracks in Settings.
 - **List view**: each market's local time, its offset from your time zone, whether it's open, and a live `Opens in` / `Closes in` countdown.
 - **Dial view**: a 24-hour clock in your local time. Each market's trading session is drawn as a coloured ring, and a hand marks the current time.
+- **Settings** (⌘, or *Settings…* in the menu bar panel): show or hide the Dock icon (hiding it makes OpenBell a menu bar-only app), choose the market shown in the menu bar, and choose the default view.
 - **Widgets**
   - **Small**: one market with a big countdown. Right-click → *Edit Widget* to pick the market.
   - **Medium**: all markets with countdowns and status.

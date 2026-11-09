@@ -18,8 +18,9 @@ final class Clock: ObservableObject {
 
 @main
 struct OpenBellApp: App {
+    @NSApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
     @StateObject private var clock = Clock()
-    @AppStorage("menuBarMarket") private var menuBarMarketID = Market.nyse.id
+    @AppStorage(SettingsKey.menuBarMarket) private var menuBarMarketID = Market.nyse.id
 
     var body: some Scene {
         WindowGroup("OpenBell", id: "main") {
@@ -42,6 +43,11 @@ struct OpenBellApp: App {
             MenuBarLabel(market: Market.with(id: menuBarMarketID), now: clock.now)
         }
         .menuBarExtraStyle(.window)
+
+        Settings {
+            SettingsView()
+                .preferredColorScheme(.dark)
+        }
     }
 }
 

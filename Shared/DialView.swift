@@ -32,9 +32,10 @@ struct DialView: View {
 
     private func layout(for size: CGSize, ringCount: Int) -> Layout {
         let side = min(size.width, size.height)
-        let outer = side / 2 * 0.86
-        let ringWidth = side * 0.058
-        let ringGap = side * 0.012
+        // Leaves room outside the backplate for the ticks and hour labels.
+        let outer = side / 2 * 0.76
+        let ringWidth = outer * 0.135
+        let ringGap = outer * 0.028
         let lastRing = outer - CGFloat(ringCount - 1) * (ringWidth + ringGap)
         return Layout(center: CGPoint(x: size.width / 2, y: size.height / 2),
                       outer: outer, ringWidth: ringWidth, ringGap: ringGap,
@@ -100,7 +101,7 @@ struct DialView: View {
                 let label = Text(String(format: "%02d", h))
                     .font(.system(size: side * 0.042, weight: .medium, design: .monospaced))
                     .foregroundColor(.white.opacity(0.45))
-                ctx.draw(label, at: point(l, radius: plateR + side * 0.04, angle: a))
+                ctx.draw(label, at: point(l, radius: plateR + side * 0.038, angle: a))
             }
         }
 
@@ -189,11 +190,11 @@ struct DialView: View {
             let side = min(geo.size.width, geo.size.height)
             VStack(spacing: side * 0.005) {
                 Text("SESSIONS")
-                    .font(.system(size: side * 0.034, weight: .semibold))
-                    .kerning(side * 0.009)
+                    .font(.system(size: side * 0.03, weight: .semibold))
+                    .kerning(side * 0.008)
                     .foregroundStyle(.white.opacity(0.6))
                 Text(now, format: .dateTime.hour(.twoDigits(amPM: .omitted)).minute(.twoDigits))
-                    .font(.system(size: side * 0.1, weight: .bold, design: .rounded))
+                    .font(.system(size: side * 0.09, weight: .bold, design: .rounded))
                     .monospacedDigit()
                     .foregroundStyle(.white)
             }

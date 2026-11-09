@@ -13,6 +13,7 @@
 		5C7E8018CE9B07790BC67BD5 /* DialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD7439830EB2DC75423FE33 /* DialView.swift */; };
 		8F740669F541B5F18BAFA8C8 /* OpenBellApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEB020E18F2D7502F124C4 /* OpenBellApp.swift */; };
 		ADB5349B6BFF99F38B8641E5 /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C39AC664BF4836613BD871 /* Market.swift */; };
+		C66172D5087780FA63925591 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D1733BE39B45171B16FFFF /* SettingsView.swift */; };
 		DCDEC22D4B35652A4125471B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A10D88C7ACF34E2883AC2007 /* Assets.xcassets */; };
 		E53CE2F5DF17AA3B60419488 /* DialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD7439830EB2DC75423FE33 /* DialView.swift */; };
 		F410FC21EB1FA58FA344788E /* OpenBellWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFFC87FB0F5DD8E3D4B84AE /* OpenBellWidget.swift */; };
@@ -49,6 +50,7 @@
 		2C7CE8FBC43C483B9CCAD2E0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		36C6008310394C05BD7BE6B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		4E5B54EA3F7CF9BAA94BEDAB /* OpenBell.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OpenBell.entitlements; sourceTree = "<group>"; };
+		64D1733BE39B45171B16FFFF /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		7FFFC87FB0F5DD8E3D4B84AE /* OpenBellWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenBellWidget.swift; sourceTree = "<group>"; };
 		A10D88C7ACF34E2883AC2007 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B03F2438685D354AB1E51C72 /* OpenBellWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OpenBellWidget.entitlements; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 				2C7CE8FBC43C483B9CCAD2E0 /* ContentView.swift */,
 				4E5B54EA3F7CF9BAA94BEDAB /* OpenBell.entitlements */,
 				10BEB020E18F2D7502F124C4 /* OpenBellApp.swift */,
+				64D1733BE39B45171B16FFFF /* SettingsView.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -215,6 +218,7 @@
 				E53CE2F5DF17AA3B60419488 /* DialView.swift in Sources */,
 				4D15E07DCD95C441AE38E106 /* Market.swift in Sources */,
 				8F740669F541B5F18BAFA8C8 /* OpenBellApp.swift in Sources */,
+				C66172D5087780FA63925591 /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

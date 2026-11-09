@@ -8,8 +8,7 @@ enum DisplayMode: String, CaseIterable, Identifiable {
 struct ContentView: View {
     var compact = false
     @EnvironmentObject private var clock: Clock
-    @AppStorage("displayMode") private var mode: DisplayMode = .list
-    @AppStorage("menuBarMarket") private var menuBarMarketID = Market.nyse.id
+    @AppStorage(SettingsKey.displayMode) private var mode: DisplayMode = .list
 
     var body: some View {
         VStack(alignment: .leading, spacing: 18) {
@@ -30,18 +29,9 @@ struct ContentView: View {
             .transition(.opacity)
 
             HStack {
-                Menu {
-                    Picker("Menu bar market", selection: $menuBarMarketID) {
-                        ForEach(Market.all) { Text($0.name).tag($0.id) }
-                    }
-                    .pickerStyle(.inline)
-                } label: {
-                    Text("Menu bar: \(Market.with(id: menuBarMarketID).name)")
-                }
-                .menuStyle(.borderlessButton)
-                .fixedSize()
-                .foregroundStyle(Palette.secondary)
-
+                SettingsButton()
+                    .buttonStyle(.plain)
+                    .foregroundStyle(Palette.secondary)
                 Spacer()
                 Button("Quit") { NSApplication.shared.terminate(nil) }
                     .buttonStyle(.plain)
