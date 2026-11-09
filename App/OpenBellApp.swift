@@ -33,6 +33,13 @@ struct OpenBellApp: App {
         }
         .windowResizability(.contentSize)
         .defaultSize(width: 480, height: 640)
+        .commands {
+            // Settings is an AppKit window (see SettingsWindowController), so wire ⌘, to it.
+            CommandGroup(replacing: .appSettings) {
+                Button("Settings…") { SettingsWindowController.show() }
+                    .keyboardShortcut(",")
+            }
+        }
 
         MenuBarExtra {
             ContentView(compact: true)
@@ -44,11 +51,6 @@ struct OpenBellApp: App {
             MenuBarLabel(market: menuBarMarket, now: clock.now)
         }
         .menuBarExtraStyle(.window)
-
-        Settings {
-            SettingsView()
-                .preferredColorScheme(.dark)
-        }
     }
 
     /// Falls back to the first enabled market if the chosen one has been turned off.
