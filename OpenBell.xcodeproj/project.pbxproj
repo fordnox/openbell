@@ -1,0 +1,457 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0C7E32C2F825CC2C2C5C7E52 /* OpenBellWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 017A54E5A0C7A464E11F843E /* OpenBellWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		1F7E5E929F098061FE7DF02B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7CE8FBC43C483B9CCAD2E0 /* ContentView.swift */; };
+		4D15E07DCD95C441AE38E106 /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C39AC664BF4836613BD871 /* Market.swift */; };
+		5C7E8018CE9B07790BC67BD5 /* DialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD7439830EB2DC75423FE33 /* DialView.swift */; };
+		8F740669F541B5F18BAFA8C8 /* OpenBellApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEB020E18F2D7502F124C4 /* OpenBellApp.swift */; };
+		ADB5349B6BFF99F38B8641E5 /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C39AC664BF4836613BD871 /* Market.swift */; };
+		E53CE2F5DF17AA3B60419488 /* DialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD7439830EB2DC75423FE33 /* DialView.swift */; };
+		F410FC21EB1FA58FA344788E /* OpenBellWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFFC87FB0F5DD8E3D4B84AE /* OpenBellWidget.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		15356B452364C86FCF339F13 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 31270CA6E51FCECA1C3E623D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 70D12FCBECF16C00C522F7B1;
+			remoteInfo = OpenBellWidget;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C9E65CD0B13543B5BA8564FE /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				0C7E32C2F825CC2C2C5C7E52 /* OpenBellWidget.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		017A54E5A0C7A464E11F843E /* OpenBellWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OpenBellWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		10BEB020E18F2D7502F124C4 /* OpenBellApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenBellApp.swift; sourceTree = "<group>"; };
+		1CD7439830EB2DC75423FE33 /* DialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialView.swift; sourceTree = "<group>"; };
+		2C7CE8FBC43C483B9CCAD2E0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		36C6008310394C05BD7BE6B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		4E5B54EA3F7CF9BAA94BEDAB /* OpenBell.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OpenBell.entitlements; sourceTree = "<group>"; };
+		7FFFC87FB0F5DD8E3D4B84AE /* OpenBellWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenBellWidget.swift; sourceTree = "<group>"; };
+		B03F2438685D354AB1E51C72 /* OpenBellWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OpenBellWidget.entitlements; sourceTree = "<group>"; };
+		BE5BFC5AB99B37089364B8EE /* OpenBell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenBell.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9C39AC664BF4836613BD871 /* Market.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Market.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		1FE497824A6CB09E6A9E2963 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BE5BFC5AB99B37089364B8EE /* OpenBell.app */,
+				017A54E5A0C7A464E11F843E /* OpenBellWidget.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4A26A3C353A6CF6C6EEA177D /* Widget */ = {
+			isa = PBXGroup;
+			children = (
+				36C6008310394C05BD7BE6B0 /* Info.plist */,
+				B03F2438685D354AB1E51C72 /* OpenBellWidget.entitlements */,
+				7FFFC87FB0F5DD8E3D4B84AE /* OpenBellWidget.swift */,
+			);
+			path = Widget;
+			sourceTree = "<group>";
+		};
+		9D18B86C78314DB289B64A47 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				2C7CE8FBC43C483B9CCAD2E0 /* ContentView.swift */,
+				4E5B54EA3F7CF9BAA94BEDAB /* OpenBell.entitlements */,
+				10BEB020E18F2D7502F124C4 /* OpenBellApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		AEB97EA360E5111EED1C1E29 = {
+			isa = PBXGroup;
+			children = (
+				9D18B86C78314DB289B64A47 /* App */,
+				B92D9215FD1C1091666356C5 /* Shared */,
+				4A26A3C353A6CF6C6EEA177D /* Widget */,
+				1FE497824A6CB09E6A9E2963 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B92D9215FD1C1091666356C5 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				1CD7439830EB2DC75423FE33 /* DialView.swift */,
+				F9C39AC664BF4836613BD871 /* Market.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5EED049F4E05F0E62ED9E8EB /* OpenBell */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 67FC6BC2660614654664F7DA /* Build configuration list for PBXNativeTarget "OpenBell" */;
+			buildPhases = (
+				8A2749DB86349D2E200EA0DA /* Sources */,
+				C9E65CD0B13543B5BA8564FE /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3AA6B2162FD51A6D45CB739A /* PBXTargetDependency */,
+			);
+			name = OpenBell;
+			packageProductDependencies = (
+			);
+			productName = OpenBell;
+			productReference = BE5BFC5AB99B37089364B8EE /* OpenBell.app */;
+			productType = "com.apple.product-type.application";
+		};
+		70D12FCBECF16C00C522F7B1 /* OpenBellWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 89AC9A7E299C5119FB2FC25F /* Build configuration list for PBXNativeTarget "OpenBellWidget" */;
+			buildPhases = (
+				102DF9646138729CF26D3D8D /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OpenBellWidget;
+			packageProductDependencies = (
+			);
+			productName = OpenBellWidget;
+			productReference = 017A54E5A0C7A464E11F843E /* OpenBellWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		31270CA6E51FCECA1C3E623D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					5EED049F4E05F0E62ED9E8EB = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+					70D12FCBECF16C00C522F7B1 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = BC8512F2FA603C33336BE236 /* Build configuration list for PBXProject "OpenBell" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = AEB97EA360E5111EED1C1E29;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 1FE497824A6CB09E6A9E2963 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5EED049F4E05F0E62ED9E8EB /* OpenBell */,
+				70D12FCBECF16C00C522F7B1 /* OpenBellWidget */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		102DF9646138729CF26D3D8D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C7E8018CE9B07790BC67BD5 /* DialView.swift in Sources */,
+				ADB5349B6BFF99F38B8641E5 /* Market.swift in Sources */,
+				F410FC21EB1FA58FA344788E /* OpenBellWidget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8A2749DB86349D2E200EA0DA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F7E5E929F098061FE7DF02B /* ContentView.swift in Sources */,
+				E53CE2F5DF17AA3B60419488 /* DialView.swift in Sources */,
+				4D15E07DCD95C441AE38E106 /* Market.swift in Sources */,
+				8F740669F541B5F18BAFA8C8 /* OpenBellApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3AA6B2162FD51A6D45CB739A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 70D12FCBECF16C00C522F7B1 /* OpenBellWidget */;
+			targetProxy = 15356B452364C86FCF339F13 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		054096080B1EE4C380CBC1C7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Widget/OpenBellWidget.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Widget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fordnox.openbell.widget;
+				PRODUCT_NAME = OpenBellWidget;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		487A7C78C10AFA219599E5FD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		855B19969F4A7C2EF66E3096 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
+				CODE_SIGN_ENTITLEMENTS = App/OpenBell.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = OpenBell;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fordnox.openbell;
+				PRODUCT_NAME = OpenBell;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		8AA8FDFC94FCD212AA6B2E9F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		A9C463FE75A5B00AEA403511 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Widget/OpenBellWidget.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Widget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fordnox.openbell.widget;
+				PRODUCT_NAME = OpenBellWidget;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		EC814505D8E46AA6FC7EB779 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
+				CODE_SIGN_ENTITLEMENTS = App/OpenBell.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = OpenBell;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fordnox.openbell;
+				PRODUCT_NAME = OpenBell;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		67FC6BC2660614654664F7DA /* Build configuration list for PBXNativeTarget "OpenBell" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				855B19969F4A7C2EF66E3096 /* Debug */,
+				EC814505D8E46AA6FC7EB779 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		89AC9A7E299C5119FB2FC25F /* Build configuration list for PBXNativeTarget "OpenBellWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				054096080B1EE4C380CBC1C7 /* Debug */,
+				A9C463FE75A5B00AEA403511 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		BC8512F2FA603C33336BE236 /* Build configuration list for PBXProject "OpenBell" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8AA8FDFC94FCD212AA6B2E9F /* Debug */,
+				487A7C78C10AFA219599E5FD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 31270CA6E51FCECA1C3E623D /* Project object */;
+}

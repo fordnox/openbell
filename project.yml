@@ -1,4 +1,4 @@
-name: MarketHours
+name: OpenBell
 options:
   bundleIdPrefix: com.fordnox
   deploymentTarget:
@@ -14,35 +14,35 @@ settings:
     DEVELOPMENT_TEAM: ""
     ENABLE_HARDENED_RUNTIME: YES
 targets:
-  MarketHours:
+  OpenBell:
     type: application
     platform: macOS
     sources: [App, Shared]
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.fordnox.MarketHours
-        PRODUCT_NAME: MarketHours
+        PRODUCT_BUNDLE_IDENTIFIER: com.fordnox.openbell
+        PRODUCT_NAME: OpenBell
         GENERATE_INFOPLIST_FILE: YES
-        INFOPLIST_KEY_CFBundleDisplayName: MarketHours
+        INFOPLIST_KEY_CFBundleDisplayName: OpenBell
         INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.finance
         INFOPLIST_KEY_NSHumanReadableCopyright: ""
-        CODE_SIGN_ENTITLEMENTS: App/MarketHours.entitlements
+        CODE_SIGN_ENTITLEMENTS: App/OpenBell.entitlements
         ASSETCATALOG_COMPILER_APPICON_NAME: ""
     dependencies:
-      - target: MarketHoursWidget
-  MarketHoursWidget:
+      - target: OpenBellWidget
+  OpenBellWidget:
     type: app-extension
     platform: macOS
     sources: [Widget, Shared]
     info:
       path: Widget/Info.plist
       properties:
-        CFBundleDisplayName: MarketHours
+        CFBundleDisplayName: OpenBell
         NSExtension:
           NSExtensionPointIdentifier: com.apple.widgetkit-extension
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.fordnox.MarketHours.Widget
-        PRODUCT_NAME: MarketHoursWidget
-        CODE_SIGN_ENTITLEMENTS: Widget/MarketHoursWidget.entitlements
+        PRODUCT_BUNDLE_IDENTIFIER: com.fordnox.openbell.widget
+        PRODUCT_NAME: OpenBellWidget
+        CODE_SIGN_ENTITLEMENTS: Widget/OpenBellWidget.entitlements
         SKIP_INSTALL: YES

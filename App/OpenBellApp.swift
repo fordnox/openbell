@@ -17,12 +17,12 @@ final class Clock: ObservableObject {
 }
 
 @main
-struct MarketHoursApp: App {
+struct OpenBellApp: App {
     @StateObject private var clock = Clock()
     @AppStorage("menuBarMarket") private var menuBarMarketID = Market.nyse.id
 
     var body: some Scene {
-        WindowGroup("MarketHours", id: "main") {
+        WindowGroup("OpenBell", id: "main") {
             ContentView()
                 .environmentObject(clock)
                 .frame(width: 480)

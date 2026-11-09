@@ -212,7 +212,7 @@ struct SessionsDialWidget: Widget {
 }
 
 @main
-struct MarketHoursWidgetBundle: WidgetBundle {
+struct OpenBellWidgetBundle: WidgetBundle {
     var body: some Widget {
         MarketCountdownWidget()
         MarketsWidget()
