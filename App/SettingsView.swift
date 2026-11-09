@@ -214,6 +214,8 @@ private struct AboutSettings: View {
                 .multilineTextAlignment(.center)
                 .foregroundStyle(.secondary)
                 .padding(.top, 4)
+            Link("camosec.com", destination: URL(string: "https://camosec.com")!)
+                .padding(.top, 8)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
