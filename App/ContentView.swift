@@ -144,6 +144,7 @@ struct SessionsDialCard: View {
     var dialSize: CGFloat = 340
     var compactCards = false
     @AppStorage(SettingsKey.enabledMarkets) private var enabledMarkets = ""
+    @AppStorage(SettingsKey.showDialCards) private var showDialCards = true
 
     var body: some View {
         VStack(spacing: 14) {
@@ -163,8 +164,10 @@ struct SessionsDialCard: View {
                 .frame(width: dialSize, height: dialSize)
                 .padding(.vertical, 4)
 
-            MarketCardGrid(markets: Market.cardOrder.enabled(Market.enabledIDs(from: enabledMarkets)),
-                           now: now, compact: compactCards, spacing: 10)
+            if showDialCards {
+                MarketCardGrid(markets: Market.cardOrder.enabled(Market.enabledIDs(from: enabledMarkets)),
+                               now: now, compact: compactCards, spacing: 10)
+            }
         }
         .padding(18)
         .background(RoundedRectangle(cornerRadius: 18, style: .continuous).fill(Palette.card))

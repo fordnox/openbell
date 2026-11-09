@@ -9,7 +9,7 @@ A native macOS app that shows how long until stock markets open or close, with l
 - **Dial view**: a 24-hour clock in your local time. Each market's trading session is drawn as a coloured ring, and a hand marks the current time.
 - **Settings** (⌘, or *Settings…* in the menu bar panel), with panes in a sidebar:
   - **General**: show or hide the Dock icon (hiding it makes OpenBell a menu bar-only app) and choose the market shown in the menu bar.
-  - **Appearance**: choose the default view, List or Dial.
+  - **Appearance**: choose the default view, List or Dial, and whether the market cards show under the dial.
   - **Markets**: turn individual markets on or off.
   - **About**: app version.
 - **Widgets**

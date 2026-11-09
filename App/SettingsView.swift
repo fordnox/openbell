@@ -6,6 +6,7 @@ enum SettingsKey {
     static let menuBarMarket = "menuBarMarket"
     static let displayMode = "displayMode"
     static let enabledMarkets = "enabledMarkets"
+    static let showDialCards = "showDialCards"
 }
 
 enum DockIcon {
@@ -127,6 +128,7 @@ private struct GeneralSettings: View {
 
 private struct AppearanceSettings: View {
     @AppStorage(SettingsKey.displayMode) private var mode: DisplayMode = .list
+    @AppStorage(SettingsKey.showDialCards) private var showDialCards = true
 
     var body: some View {
         Form {
@@ -138,6 +140,10 @@ private struct AppearanceSettings: View {
             } footer: {
                 Text("List shows each market's countdown; Dial shows the day's sessions on a 24-hour clock.")
                     .foregroundStyle(.secondary)
+            }
+
+            Section("Dial") {
+                Toggle("Show market cards under the dial", isOn: $showDialCards)
             }
         }
     }
