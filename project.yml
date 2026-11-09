@@ -1,0 +1,48 @@
+name: MarketHours
+options:
+  bundleIdPrefix: com.fordnox
+  deploymentTarget:
+    macOS: "14.0"
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    MARKETING_VERSION: "1.0"
+    CURRENT_PROJECT_VERSION: "1"
+    CODE_SIGN_STYLE: Automatic
+    CODE_SIGN_IDENTITY: "-"
+    DEVELOPMENT_TEAM: ""
+    ENABLE_HARDENED_RUNTIME: YES
+targets:
+  MarketHours:
+    type: application
+    platform: macOS
+    sources: [App, Shared]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.fordnox.MarketHours
+        PRODUCT_NAME: MarketHours
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: MarketHours
+        INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.finance
+        INFOPLIST_KEY_NSHumanReadableCopyright: ""
+        CODE_SIGN_ENTITLEMENTS: App/MarketHours.entitlements
+        ASSETCATALOG_COMPILER_APPICON_NAME: ""
+    dependencies:
+      - target: MarketHoursWidget
+  MarketHoursWidget:
+    type: app-extension
+    platform: macOS
+    sources: [Widget, Shared]
+    info:
+      path: Widget/Info.plist
+      properties:
+        CFBundleDisplayName: MarketHours
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.fordnox.MarketHours.Widget
+        PRODUCT_NAME: MarketHoursWidget
+        CODE_SIGN_ENTITLEMENTS: Widget/MarketHoursWidget.entitlements
+        SKIP_INSTALL: YES
