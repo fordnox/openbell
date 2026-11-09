@@ -13,6 +13,7 @@
 		5C7E8018CE9B07790BC67BD5 /* DialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD7439830EB2DC75423FE33 /* DialView.swift */; };
 		8F740669F541B5F18BAFA8C8 /* OpenBellApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEB020E18F2D7502F124C4 /* OpenBellApp.swift */; };
 		ADB5349B6BFF99F38B8641E5 /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C39AC664BF4836613BD871 /* Market.swift */; };
+		DCDEC22D4B35652A4125471B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A10D88C7ACF34E2883AC2007 /* Assets.xcassets */; };
 		E53CE2F5DF17AA3B60419488 /* DialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD7439830EB2DC75423FE33 /* DialView.swift */; };
 		F410FC21EB1FA58FA344788E /* OpenBellWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFFC87FB0F5DD8E3D4B84AE /* OpenBellWidget.swift */; };
 /* End PBXBuildFile section */
@@ -49,6 +50,7 @@
 		36C6008310394C05BD7BE6B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		4E5B54EA3F7CF9BAA94BEDAB /* OpenBell.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OpenBell.entitlements; sourceTree = "<group>"; };
 		7FFFC87FB0F5DD8E3D4B84AE /* OpenBellWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenBellWidget.swift; sourceTree = "<group>"; };
+		A10D88C7ACF34E2883AC2007 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B03F2438685D354AB1E51C72 /* OpenBellWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OpenBellWidget.entitlements; sourceTree = "<group>"; };
 		BE5BFC5AB99B37089364B8EE /* OpenBell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenBell.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9C39AC664BF4836613BD871 /* Market.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Market.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 		9D18B86C78314DB289B64A47 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				A10D88C7ACF34E2883AC2007 /* Assets.xcassets */,
 				2C7CE8FBC43C483B9CCAD2E0 /* ContentView.swift */,
 				4E5B54EA3F7CF9BAA94BEDAB /* OpenBell.entitlements */,
 				10BEB020E18F2D7502F124C4 /* OpenBellApp.swift */,
@@ -111,6 +114,7 @@
 			buildConfigurationList = 67FC6BC2660614654664F7DA /* Build configuration list for PBXNativeTarget "OpenBell" */;
 			buildPhases = (
 				8A2749DB86349D2E200EA0DA /* Sources */,
+				6094F12B4CC7C6B5B022D9AB /* Resources */,
 				C9E65CD0B13543B5BA8564FE /* Embed Foundation Extensions */,
 			);
 			buildRules = (
@@ -149,7 +153,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 2720;
 				TargetAttributes = {
 					5EED049F4E05F0E62ED9E8EB = {
 						DevelopmentTeam = VBTQQJK27C;
@@ -180,6 +184,17 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6094F12B4CC7C6B5B022D9AB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DCDEC22D4B35652A4125471B /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		102DF9646138729CF26D3D8D /* Sources */ = {
@@ -219,6 +234,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = Widget/OpenBellWidget.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				INFOPLIST_FILE = Widget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -236,6 +252,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -269,11 +286,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = VBTQQJK27C;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -288,6 +307,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
@@ -297,12 +317,15 @@
 		855B19969F4A7C2EF66E3096 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = App/OpenBell.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = OpenBell;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
+				INFOPLIST_KEY_LSMinimumSystemVersion = 14.0;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -318,6 +341,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -351,11 +375,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = VBTQQJK27C;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -377,6 +403,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -388,6 +415,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = Widget/OpenBellWidget.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				INFOPLIST_FILE = Widget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -404,12 +432,15 @@
 		EC814505D8E46AA6FC7EB779 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = App/OpenBell.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = OpenBell;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
+				INFOPLIST_KEY_LSMinimumSystemVersion = 14.0;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
