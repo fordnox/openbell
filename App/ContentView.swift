@@ -72,6 +72,9 @@ struct SegmentedToggle: View {
                         .contentShape(Rectangle())
                 }
                 .buttonStyle(.plain)
+                // The panel gives the first button key focus on open, and macOS would
+                // draw its focus ring there regardless of which option is selected.
+                .focusEffectDisabled()
             }
         }
         .padding(4)
