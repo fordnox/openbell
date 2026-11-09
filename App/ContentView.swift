@@ -84,12 +84,14 @@ struct SegmentedToggle: View {
 
 struct MarketListView: View {
     let now: Date
+    @AppStorage(SettingsKey.enabledMarkets) private var enabledMarkets = ""
 
     var body: some View {
+        let markets = Market.all.enabled(Market.enabledIDs(from: enabledMarkets))
         VStack(spacing: 0) {
-            ForEach(Array(Market.all.enumerated()), id: \.element.id) { index, market in
+            ForEach(Array(markets.enumerated()), id: \.element.id) { index, market in
                 MarketRow(market: market, now: now)
-                if index < Market.all.count - 1 {
+                if index < markets.count - 1 {
                     Divider().overlay(Color.white.opacity(0.06))
                 }
             }
@@ -138,6 +140,7 @@ struct SessionsDialCard: View {
     /// (e.g. the menu bar panel keeps the height of whichever view it showed first).
     var dialSize: CGFloat = 340
     var compactCards = false
+    @AppStorage(SettingsKey.enabledMarkets) private var enabledMarkets = ""
 
     var body: some View {
         VStack(spacing: 14) {
@@ -153,15 +156,12 @@ struct SessionsDialCard: View {
                     .foregroundStyle(.white.opacity(0.75))
             }
 
-            DialView(now: now)
+            DialView(now: now, markets: Market.dialOrder.enabled(Market.enabledIDs(from: enabledMarkets)))
                 .frame(width: dialSize, height: dialSize)
                 .padding(.vertical, 4)
 
-            HStack(spacing: 10) {
-                ForEach(Market.cardOrder) { m in
-                    MarketCard(market: m, now: now, compact: compactCards)
-                }
-            }
+            MarketCardGrid(markets: Market.cardOrder.enabled(Market.enabledIDs(from: enabledMarkets)),
+                           now: now, compact: compactCards, spacing: 10)
         }
         .padding(18)
         .background(RoundedRectangle(cornerRadius: 18, style: .continuous).fill(Palette.card))

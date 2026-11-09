@@ -5,6 +5,7 @@ enum SettingsKey {
     static let showDockIcon = "showDockIcon"
     static let menuBarMarket = "menuBarMarket"
     static let displayMode = "displayMode"
+    static let enabledMarkets = "enabledMarkets"
 }
 
 enum DockIcon {
@@ -40,6 +41,23 @@ struct SettingsView: View {
     @AppStorage(SettingsKey.showDockIcon) private var showDockIcon = true
     @AppStorage(SettingsKey.menuBarMarket) private var menuBarMarketID = Market.nyse.id
     @AppStorage(SettingsKey.displayMode) private var mode: DisplayMode = .list
+    @AppStorage(SettingsKey.enabledMarkets) private var enabledMarkets = ""
+
+    private var enabledIDs: Set<String> { Market.enabledIDs(from: enabledMarkets) }
+
+    private func isEnabled(_ market: Market) -> Binding<Bool> {
+        Binding {
+            enabledIDs.contains(market.id)
+        } set: { on in
+            var ids = enabledIDs
+            if on { ids.insert(market.id) } else { ids.remove(market.id) }
+            guard !ids.isEmpty else { return }
+            enabledMarkets = Market.encode(enabledIDs: ids)
+            if !ids.contains(menuBarMarketID) {
+                menuBarMarketID = Market.all.enabled(ids).first?.id ?? Market.nyse.id
+            }
+        }
+    }
 
     var body: some View {
         Form {
@@ -53,12 +71,26 @@ struct SettingsView: View {
 
             Section {
                 Picker("Menu bar market", selection: $menuBarMarketID) {
-                    ForEach(Market.all) { Text($0.name).tag($0.id) }
+                    ForEach(Market.all.enabled(enabledIDs)) { Text($0.name).tag($0.id) }
                 }
                 Picker("Default view", selection: $mode) {
                     ForEach(DisplayMode.allCases) { Text($0.rawValue).tag($0) }
                 }
                 .pickerStyle(.segmented)
+            }
+
+            Section("Markets") {
+                ForEach(Market.all) { market in
+                    let isOnlyOne = enabledIDs == [market.id]
+                    Toggle(isOn: isEnabled(market)) {
+                        HStack(spacing: 8) {
+                            MarketBadge(market: market, size: 10)
+                            Text(market.name)
+                            Text(market.fullName).foregroundStyle(.secondary)
+                        }
+                    }
+                    .disabled(isOnlyOne)
+                }
             }
         }
         .formStyle(.grouped)

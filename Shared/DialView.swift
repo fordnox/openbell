@@ -32,11 +32,17 @@ struct DialView: View {
 
     private func layout(for size: CGSize, ringCount: Int) -> Layout {
         let side = min(size.width, size.height)
-        // Leaves room outside the backplate for the ticks and hour labels.
-        let outer = side / 2 * 0.76
-        let ringWidth = outer * 0.135
-        let ringGap = outer * 0.028
-        let lastRing = outer - CGFloat(ringCount - 1) * (ringWidth + ringGap)
+        let n = CGFloat(max(ringCount, 1))
+        // Outer edge of the rings leaves room for the ticks and hour labels;
+        // the center disc never gets smaller than what the center time needs.
+        let edge = side * 0.4055
+        let minInner = side * 0.147
+        let gapRatio: CGFloat = 0.207
+        // Rings + gaps fill the band between the two: n widths, n + 1 gaps.
+        let ringWidth = min(side * 0.0513, (edge - minInner) / (n + gapRatio * (n + 1)))
+        let ringGap = ringWidth * gapRatio
+        let outer = edge - ringWidth / 2
+        let lastRing = outer - (n - 1) * (ringWidth + ringGap)
         return Layout(center: CGPoint(x: size.width / 2, y: size.height / 2),
                       outer: outer, ringWidth: ringWidth, ringGap: ringGap,
                       inner: lastRing - ringWidth / 2 - ringGap * 2)
@@ -158,7 +164,7 @@ struct DialView: View {
             ctx.fill(Path(ellipseIn: rect), with: .color(color))
             ctx.stroke(Path(ellipseIn: rect), with: .color(.white.opacity(0.85)), lineWidth: max(0.5, side * 0.002))
         }
-        let knobR = l.ringWidth * 0.32
+        let knobR = max(l.ringWidth, side * 0.04) * 0.32
         let k = point(l, radius: handEnd, angle: a)
         ctx.fill(Path(ellipseIn: CGRect(x: k.x - knobR, y: k.y - knobR, width: knobR * 2, height: knobR * 2)),
                  with: .radialGradient(Gradient(colors: [.white, Color(white: 0.55)]),
@@ -169,6 +175,7 @@ struct DialView: View {
     /// Letters spaced along the top of a ring, reading left to right.
     private func drawCurvedLabel(ctx: GraphicsContext, l: Layout, radius: CGFloat, text: String, side: CGFloat) {
         let fontSize = l.ringWidth * 0.55
+        guard fontSize >= 5 else { return } // too many rings to label legibly
         let letterAngle = Double(fontSize * 1.05 / radius) // radians per glyph
         let chars = Array(text)
         let total = letterAngle * Double(chars.count - 1)
@@ -255,6 +262,33 @@ struct CountdownText: View {
     }
 }
 
+/// Cards in evenly filled rows of at most four (5 → 3+2, 6 → 3+3, 7 → 4+3).
+struct MarketCardGrid: View {
+    let markets: [Market]
+    let now: Date
+    var live = false
+    var compact = false
+    var spacing: CGFloat = 10
+
+    var body: some View {
+        let rows = Int((Double(markets.count) / 4).rounded(.up))
+        let perRow = max(1, Int((Double(markets.count) / Double(max(rows, 1))).rounded(.up)))
+        VStack(spacing: spacing) {
+            ForEach(Array(stride(from: 0, to: markets.count, by: perRow)), id: \.self) { start in
+                HStack(spacing: spacing) {
+                    ForEach(markets[start..<Swift.min(start + perRow, markets.count)]) { m in
+                        MarketCard(market: m, now: now, live: live, compact: compact)
+                    }
+                    // Keep a short last row's cards the same width as the rows above.
+                    ForEach(0..<(perRow - Swift.min(perRow, markets.count - start)), id: \.self) { _ in
+                        Color.clear.frame(maxWidth: .infinity, maxHeight: 0)
+                    }
+                }
+            }
+        }
+    }
+}
+
 /// The compact card shown under the dial.
 struct MarketCard: View {
     let market: Market
@@ -272,6 +306,7 @@ struct MarketCard: View {
                     .font(.system(size: compact ? 11 : 13, weight: .semibold))
                     .foregroundStyle(compact ? market.color : .white)
                     .lineLimit(1)
+                    .minimumScaleFactor(0.75)
                     .truncationMode(.tail)
                     .layoutPriority(-1)
                 StatusDot(phase: phase, size: 7)

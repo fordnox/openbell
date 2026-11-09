@@ -21,6 +21,7 @@ struct OpenBellApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
     @StateObject private var clock = Clock()
     @AppStorage(SettingsKey.menuBarMarket) private var menuBarMarketID = Market.nyse.id
+    @AppStorage(SettingsKey.enabledMarkets) private var enabledMarkets = ""
 
     var body: some Scene {
         WindowGroup("OpenBell", id: "main") {
@@ -40,7 +41,7 @@ struct OpenBellApp: App {
                 .fixedSize(horizontal: false, vertical: true)
                 .preferredColorScheme(.dark)
         } label: {
-            MenuBarLabel(market: Market.with(id: menuBarMarketID), now: clock.now)
+            MenuBarLabel(market: menuBarMarket, now: clock.now)
         }
         .menuBarExtraStyle(.window)
 
@@ -48,6 +49,12 @@ struct OpenBellApp: App {
             SettingsView()
                 .preferredColorScheme(.dark)
         }
+    }
+
+    /// Falls back to the first enabled market if the chosen one has been turned off.
+    private var menuBarMarket: Market {
+        let enabled = Market.all.enabled(Market.enabledIDs(from: enabledMarkets))
+        return enabled.first { $0.id == menuBarMarketID } ?? enabled.first ?? .nyse
     }
 }
 

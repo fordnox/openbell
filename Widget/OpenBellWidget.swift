@@ -5,11 +5,14 @@ import WidgetKit
 // MARK: - Configuration
 
 enum MarketChoice: String, AppEnum {
-    case nyse = "NYSE", nasdaq = "NASDAQ", lse = "LSE", crypto = "CRYPTO"
+    case nyse = "NYSE", nasdaq = "NASDAQ", tsx = "TSX", lse = "LSE", xetra = "XETRA", euronext = "EURONEXT"
+    case tse = "TSE", sse = "SSE", hkex = "HKEX", nse = "NSE", asx = "ASX", crypto = "CRYPTO"
 
     static var typeDisplayRepresentation: TypeDisplayRepresentation = "Market"
     static var caseDisplayRepresentations: [MarketChoice: DisplayRepresentation] = [
-        .nyse: "NYSE", .nasdaq: "NASDAQ", .lse: "LSE", .crypto: "Crypto",
+        .nyse: "NYSE", .nasdaq: "NASDAQ", .tsx: "TSX (Toronto)", .lse: "LSE (London)",
+        .xetra: "Xetra (Frankfurt)", .euronext: "Euronext", .tse: "TSE (Tokyo)", .sse: "SSE (Shanghai)",
+        .hkex: "HKEX (Hong Kong)", .nse: "NSE (India)", .asx: "ASX (Sydney)", .crypto: "Crypto",
     ]
 
     var market: Market { Market.with(id: rawValue) }
@@ -122,7 +125,8 @@ struct MarketListWidgetView: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            ForEach(Array(Market.all.enumerated()), id: \.element.id) { index, market in
+            let markets = Market.all.enabled(Market.defaultEnabledIDs)
+            ForEach(Array(markets.enumerated()), id: \.element.id) { index, market in
                 let phase = market.phase(at: date)
                 HStack(spacing: 8) {
                     MarketBadge(market: market, size: 10)
@@ -141,7 +145,7 @@ struct MarketListWidgetView: View {
                     StatusDot(phase: phase, size: 8)
                 }
                 .frame(maxHeight: .infinity)
-                if index < Market.all.count - 1 {
+                if index < markets.count - 1 {
                     Divider().overlay(Color.white.opacity(0.06))
                 }
             }
@@ -163,11 +167,10 @@ struct DialWidgetView: View {
                     .foregroundStyle(Palette.secondary)
                 Spacer()
             }
-            DialView(now: date)
+            DialView(now: date, markets: Market.dialOrder.enabled(Market.defaultEnabledIDs))
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-            HStack(spacing: 6) {
-                ForEach(Market.cardOrder) { MarketCard(market: $0, now: date, live: true, compact: true) }
-            }
+            MarketCardGrid(markets: Market.cardOrder.enabled(Market.defaultEnabledIDs),
+                           now: date, live: true, compact: true, spacing: 6)
         }
         .foregroundStyle(.white)
     }
